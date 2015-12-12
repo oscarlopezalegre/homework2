@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
 		if user.authenticate(@password)
 			#authorization completed
 			session[:userid] = user.id
-			@success= true
+			redirect_to messages_path
 		else
 			#authorization failed
 		end
