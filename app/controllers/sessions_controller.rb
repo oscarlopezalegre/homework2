@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
 	if user
 		if user.authenticate(@password)
 			#authorization completed
+			session[:userid] = user.id
 			@success= true
 		else
 			#authorization failed
@@ -19,5 +20,6 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+  	session.delete(:userid)
   end
 end

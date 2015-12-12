@@ -8,6 +8,30 @@
 </head>
 <body>
 
+<% if session[:userid] %>
+Welcome
+<%= User.find(session[:userid]).name%>
+
+<%= link_to "logout", logout_path %><br>
+<% else %>
+
+<div class="login-form">
+  <%= form_for(:session, :url => login_path) do |f| %>
+    <div class="form-group">
+      <%= f.text_field 'email', class: 'form-control', placeholder: 'Your E-mail' %>
+    </div>
+      <div class="form-group">
+        <%= f.password_field 'password', class: 'form-control', placeholder: 'Password' %>
+      </div>
+    </div>
+    <div class="form-group">
+        <%= f.submit 'Sign In', class: 'btn btn-block btn-info' %>
+    </div>
+  <% end %>
+
+
+<% end %>
+
 <%= yield %>
 
 </body>
