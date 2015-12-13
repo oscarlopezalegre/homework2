@@ -2,3 +2,8 @@ Subject
 <%= @message.subject%>
 Content
 <%= @message.content%>
+Attachment url
+<%= @message.attachment.url%>
+Attachment
+<%= image_tag @message.attachment.url %>
+

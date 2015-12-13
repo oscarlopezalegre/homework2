@@ -21,6 +21,11 @@ friend id:
     </div>
 
     <div class="form-group">
+      <%= f.file_field 'imagefile', class: 'form-control' %>
+  
+      </div>
+
+    <div class="form-group">
         <%= f.submit 'Send', class: 'btn btn-block btn-info' %>
     </div>
   <% end %>

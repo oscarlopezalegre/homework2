@@ -20,8 +20,19 @@ class MessagesController < ApplicationController
     @content = params[:message][:content]
     @sender = User.find(session[:userid])
     @recipient = User.find(params[:message][:recipient])
-    @read = false    
+    @read = false
+    @attachment = params[:message][:imagefile]    
+    # like this
+
     message = Message.new(:content => @content, :sender => @sender, :recipient => @recipient, :read => @read)
+    if @attachment
+        message.attachment = @attachment
+
+#      File.open(@attachment) do |f|
+#        message.attachment = f
+#      end
+    end
+
     if message.save
       #success and beers
       redirect_to messages_path

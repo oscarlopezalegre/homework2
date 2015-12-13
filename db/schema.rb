@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20151212131530) do
     t.text     "content"
     t.integer  "sender_id"
     t.integer  "recipient_id"
+    t.string   "attachment"
     t.boolean  "read"
     t.datetime "read_time"
     t.datetime "created_at",   null: false

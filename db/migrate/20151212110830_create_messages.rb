@@ -5,6 +5,7 @@ class CreateMessages < ActiveRecord::Migration
       t.text :content
       t.integer :sender_id
       t.integer :recipient_id    
+      t.string :attachment
       t.boolean :read
       t.timestamp :read_time      
       t.timestamps null: false
