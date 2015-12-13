@@ -32,9 +32,11 @@ class MessagesController < ApplicationController
 #        message.attachment = f
 #      end
     end
-
     if message.save
       #success and beers
+
+      MessageMailer.receive_email(@recipient,message).deliver_now
+
       redirect_to messages_path
     else
       #error try again later (maybe a flash message)
@@ -50,6 +52,8 @@ class MessagesController < ApplicationController
       @message.read = true
       @message.read_time = Time.now
       @message.save
+      MessageMailer.read_email(@message).deliver_now
+
     end
   end
 

@@ -1,0 +1,10 @@
+Dear <%= @sender.name%>,<br>
+<br>
+Your friend <%=User.find(@message.recipient).name%> read your message at <%= @message.read_time%><br>
+<% 
+	@message_url = url_for :controller=>'messages', :action=>'sent', :host =>  @host, :port => @port 
+%>
+<%= link_to "Message", @message_url %>
+<br>
+Enjoy your day,<br>
+Homework2

@@ -1,0 +1,13 @@
+Dear <%= @recipient.name%>,<br>
+<br>
+Your friend just sent you a message, you can see it by clicking here:<br>
+
+<% 
+
+	@message_url = url_for :controller=>'messages', :action=>'show', :id => @message.id, :host =>  @host, :port => @port 
+%>
+
+<%= link_to "Message", @message_url %>
+<br>
+Enjoy your day,<br>
+Homework2
