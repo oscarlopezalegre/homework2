@@ -55,7 +55,7 @@ class MessagesController < ApplicationController
 
   def index
     require_user_logged_in
-  	@messages = Message.all
+  	@messages = Message.received_messages(session[:userid]).page(params[:page]).per(5)
   	@users = User.all
   end
 

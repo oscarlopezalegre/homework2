@@ -1,0 +1,6 @@
+<% @messages.each do |message| %>
+  <tr>
+    <td><%= message.subject %></td>
+    <td><%= link_to "watch", message_path(message) %></td>
+  </tr>
+<% end %>

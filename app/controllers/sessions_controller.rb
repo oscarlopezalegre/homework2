@@ -6,7 +6,6 @@ class SessionsController < ApplicationController
 
   def create
 
-    get_logger.error "..................................................................................1"
 
   	@email = params[:session][:email]
   	@password = params[:session][:password]

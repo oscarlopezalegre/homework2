@@ -1,0 +1,12 @@
+<div class="infinite-table">
+  <table>
+    <tr>
+      <th>Render users</th>
+      <th></th>
+    </tr>
+    <%= render :partial => 'users', :object => @users %>
+  </table>
+  <p class="pagination">
+    <%= link_to_next_page(@users, 'Next Page', :remote => true) %>
+  </p>
+</div>

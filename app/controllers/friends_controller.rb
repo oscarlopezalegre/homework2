@@ -1,7 +1,7 @@
 class FriendsController < ApplicationController
   def index
     require_user_logged_in
-  	@users = User.all
+  	@users = User.all.page(params[:page]).per(10)
   end
 
   def new

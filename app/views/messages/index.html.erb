@@ -1,8 +1,18 @@
-Messages Received
-<% Message.received_messages(session[:userid]).each do |i|%>
-<%= link_to i.id, message_path(i.id) %><br>
 
-<%	end %>
+
+
+<div class="infinite-table">
+  <table>
+    <tr>
+      <th>Lesson</th>
+      <th></th>
+    </tr>
+    <%= render :partial => 'messages', :object => @messages %>
+  </table>
+  <p class="pagination">
+    <%= link_to_next_page(@messages, 'Next Page', :remote => true) %>
+  </p>
+</div>
 
 
 

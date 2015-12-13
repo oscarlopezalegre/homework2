@@ -1,0 +1,9 @@
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.name %> </td>
+    <td><%= link_to "watch", user_path(user) %></td>
+  </tr>
+<% end %>
+
+
+

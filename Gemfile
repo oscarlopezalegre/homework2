@@ -41,7 +41,8 @@ end
 
 gem 'omniauth'
 gem 'omniauth-facebook', '1.4.0'
-
+gem 'kaminari'
+gem 'jquery-infinite-pages'
 gem 'carrierwave'
 
 group :development do

@@ -1,6 +1,12 @@
+<%= paginate @users %>
+
 <% @users.each do |i| %>
+
+    <% if i.uid %>
+    <%= image_tag "http://graph.facebook.com/"+i.uid.to_s+"/picture?type=square" %>
+    <% end %>
 	<%= i.name %>
-	<br>	
+	<br>
 
 	<%= link_to "add as friend" , new_friend_path(i) %>
 	
@@ -11,6 +17,12 @@
 
 
 <% end %>
+
+
+
+
+
+
 
 
 

@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
 
+  def index
+    @users = User.all.page(params[:page]).per(5)
+  end
+
   def create
   	@user = User.new(user_params)
   	if @user.save
