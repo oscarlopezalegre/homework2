@@ -6,13 +6,16 @@ Rails.application.routes.draw do
 
   get 'messages/index'
 
+  post 'login_form' => 'sessions#new'
   post 'login' => 'sessions#create'
+  get 'login' => 'sessions#new'
   get 'logout' => 'sessions#destroy'
 
 
   get 'welcome/index'
 
   get 'message/sent' => 'messages#sent'
+  get 'message/error' => 'messages#already_read'
 
   resources :users
 

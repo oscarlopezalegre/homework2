@@ -4,6 +4,12 @@
 
 	<%= link_to "add as friend" , new_friend_path(i) %>
 	
+	Friends of session and session<br>	
+
+	<%= 
+	Friend.friends(session[:userid],i).present? %>
+
+
 <% end %>
 
 

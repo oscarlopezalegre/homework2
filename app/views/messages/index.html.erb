@@ -1,11 +1,10 @@
-<% @users.each do |i|
-		puts i
-	end
-%>
-<% @messages.each do |i|
-		puts i
-	end
-%>
+Messages Received
+<% Message.received_messages(session[:userid]).each do |i|%>
+<%= link_to i.id, message_path(i.id) %><br>
+
+<%	end %>
+
+
 
 
 <%= link_to "new message", new_message_path

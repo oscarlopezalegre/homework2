@@ -1,1 +1,12 @@
-cool	
+<% @sent_messages.each do |i|%>
+Content: 
+<%= i.content %><br>
+read: 
+<%= i.read %><br>
+
+<% if i.read %>
+
+<%= i.read_time %>
+
+<% end %>
+<% end %>

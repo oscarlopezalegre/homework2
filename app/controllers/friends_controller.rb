@@ -1,10 +1,12 @@
 class FriendsController < ApplicationController
   def index
+    require_user_logged_in
   	@users = User.all
   end
 
   def new
-  	@users = User.all
+    require_user_logged_in
+    @users = User.all
 
   	@friend = Friend.new
 
@@ -20,6 +22,7 @@ class FriendsController < ApplicationController
   end
 
   def create
+    require_user_logged_in
   	@friend = Friend.new(:friend1 => params[:format], :friend2 => session[:userid])
   	if friend.save
   		redirect_to friend_path(friend)
@@ -30,5 +33,9 @@ class FriendsController < ApplicationController
   end
 
   def show
+    require_user_logged_in
   end
+
+
+
 end
