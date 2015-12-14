@@ -19,8 +19,9 @@ ActiveRecord::Schema.define(version: 20151212131530) do
   create_table "friends", force: :cascade do |t|
     t.integer  "friend1_id"
     t.integer  "friend2_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "block",      default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "messages", force: :cascade do |t|

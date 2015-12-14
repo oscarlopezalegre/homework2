@@ -7,6 +7,8 @@ gem 'rails', '4.2.5'
 gem 'pg', '~> 0.15'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+gem 'bootstrap', '~> 4.0.0.alpha1'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -53,3 +55,8 @@ group :development do
   gem 'spring'
 end
 
+
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.1.0'
+end

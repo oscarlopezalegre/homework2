@@ -35,7 +35,6 @@ class SessionsController < ApplicationController
 
   #needed for the log in with facebook
   def fb_create    
-
     user = User.from_omniauth(env["omniauth.auth"])
     session[:userid] = user.id
     redirect_to messages_path

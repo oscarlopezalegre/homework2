@@ -10,7 +10,7 @@
 
 
 <% if session[:userid] %>
-  Welcome
+  Welcome  
   <%= User.find(session[:userid]).name%>
   <%= link_to "logout", logout_path %><br>
 <% else %>

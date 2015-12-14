@@ -22,6 +22,11 @@ Rails.application.routes.draw do
   resources :messages
 
   resources :friends
+  
+  get  'remove_friend' => 'friends#destroy'
+  get  'unblock_friend' => 'friends#unblock'
+  get  'block_friend' => 'friends#block'
+  
 
 
   match 'auth/:provider/callback', to: 'sessions#fb_create', via: [:get, :post]

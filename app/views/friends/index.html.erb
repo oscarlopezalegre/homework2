@@ -8,12 +8,22 @@
 	<%= i.name %>
 	<br>
 
-	<%= link_to "add as friend" , new_friend_path(i) %>
 	
 	Friends of session and session<br>	
 
-	<%= 
-	Friend.friends(session[:userid],i).present? %>
+	<% if Friend.friends(session[:userid],i).present? %>
+		<%= link_to "Remove" , remove_friend_path(i) %>
+
+		<% if Friend.blocks(session[:userid],i).present? %>
+			<%= link_to "Allow" , unblock_friend_path(i) %>
+	    <% else %>
+			<%= link_to "Block" , block_friend_path(i) %>
+	    <% end %>
+
+
+    <% else %>
+		<%= link_to "add as friend" , new_friend_path(i) %>
+    <% end %>
 
 
 <% end %>
