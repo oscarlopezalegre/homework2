@@ -13,8 +13,11 @@ class FriendsController < ApplicationController
 
   	@friend.friend1 = @users.find(params[:format])
   	@friend.friend2 = @users.find(session[:userid])
-    @friend.block = false
+
+
   	if @friend.save
+      @friend.block = false
+      @friend.save
   		redirect_to friends_path
   	else
 		redirect_to back_path  	
