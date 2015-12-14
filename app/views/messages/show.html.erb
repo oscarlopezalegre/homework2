@@ -1,9 +1,21 @@
 Subject
-<%= @message.subject%>
-Content
-<%= @message.content%>
-Attachment url
-<%= @message.attachment.url%>
-Attachment
-<%= image_tag @message.attachment.url %>
 
+<div class="infinite-table col-sm-4 col-md-4 col-md-offset-4">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Subject</th>
+        <th>Content</th>
+        <th>Attachment</th>
+      </tr>
+    </thead>
+    <tr>
+
+<td><%= @message.subject%></td>
+<td><%= @message.content%></td>
+<td><%= image_tag @message.attachment.url %></td>
+
+
+  </tr>
+  </table>
+</div>

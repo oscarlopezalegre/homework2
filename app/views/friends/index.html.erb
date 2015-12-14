@@ -1,32 +1,56 @@
+
+
 <%= paginate @users %>
 
-<% @users.each do |i| %>
+<div class="infinite-table col-sm-4 col-md-4 col-md-offset-4">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Friend</th>
+        <th>Block</th>
+      </tr>
+    </thead>
+    <tr>
 
-    <% if i.uid %>
-    <%= image_tag "http://graph.facebook.com/"+i.uid.to_s+"/picture?type=square" %>
-    <% end %>
-	<%= i.name %>
-	<br>
 
-	
-	Friends of session and session<br>	
 
+	<% @users.each do |i| %>	
+		<tr>
 	<% if Friend.friends(session[:userid],i).present? %>
+
+		<td>
+			<%=i.name%>
+		</td>
+		<td>
 		<%= link_to "Remove" , remove_friend_path(i) %>
-
+		</td>
 		<% if Friend.blocks(session[:userid],i).present? %>
+		<td>
 			<%= link_to "Allow" , unblock_friend_path(i) %>
+		</td>
 	    <% else %>
+		<td>
 			<%= link_to "Block" , block_friend_path(i) %>
+		</td>
 	    <% end %>
-
-
     <% else %>
+    	<td>
+			<%=i.name%>
+		</td>
+		<td>
 		<%= link_to "add as friend" , new_friend_path(i) %>
+		</td>
     <% end %>
+		</tr>
+	<% end %>
 
 
-<% end %>
+  </tr>
+  </table>
+</div>
+
+
 
 
 

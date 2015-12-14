@@ -1,6 +1,11 @@
 <% @messages.each do |message| %>
   <tr>
-    <td><%= message.subject %></td>
-    <td><%= link_to "watch", message_path(message) %></td>
+	    <td><%= message.sender.name %></td>
+	    <td><%= message.created_at.strftime("%d %b %y") %></td>
+	    <td><%= message.subject %></td>
+	 	</b>
+		<%if message.read == false %>
+	    	<td><%= link_to "read", message_path(message) %></td>
+	    <%end%>
   </tr>
 <% end %>

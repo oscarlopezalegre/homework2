@@ -1,12 +1,27 @@
-<% @sent_messages.each do |i|%>
-Content: 
-<%= i.content %><br>
-read: 
-<%= i.read %><br>
 
-<% if i.read %>
 
-<%= i.read_time %>
+<div class="infinite-table col-sm-4 col-md-4 col-md-offset-4">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Subject</th>
+        <th>Read</th>
+        <th>Time</th>
+      </tr>
+    </thead>
+    <tr>
+	<% @sent_messages.each do |i|%>
+    <tr>
+		<td> <%=i.recipient.name%> </td>
+		<td> <%= i.read%></td>
+		<% if i.read %>
+		<td><%= i.read_time %></td>
+		<% end %>
+	<% end %>
+  </tr>
 
-<% end %>
-<% end %>
+  </tr>
+  </table>
+ 
+</div>
+

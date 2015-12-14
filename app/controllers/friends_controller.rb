@@ -13,7 +13,7 @@ class FriendsController < ApplicationController
 
   	@friend.friend1 = @users.find(params[:format])
   	@friend.friend2 = @users.find(session[:userid])
-
+    @friend.block = false
   	if @friend.save
   		redirect_to friends_path
   	else
@@ -25,7 +25,7 @@ class FriendsController < ApplicationController
   def create
     require_user_logged_in
   	@friend = Friend.new(:friend1 => params[:format], :friend2 => session[:userid])
-  	if friend.save
+  	if @friend.save
   		redirect_to friend_path(friend)
   	else
 		redirect_to back_path  	

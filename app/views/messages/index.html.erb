@@ -1,13 +1,18 @@
 
 
-
-<div class="infinite-table">
-  <table>
+<div class="infinite-table col-sm-4 col-md-4 col-md-offset-4">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>From</th>
+        <th>Time</th>
+        <th>Subject</th>
+      </tr>
+    </thead>
     <tr>
-      <th>Lesson</th>
-      <th></th>
-    </tr>
-    <%= render :partial => 'messages', :object => @messages %>
+
+    <%= render :partial => 'messages', :object => @messages %>    
+  </tr>
   </table>
   <p class="pagination">
     <%= link_to_next_page(@messages, 'Next Page', :remote => true) %>

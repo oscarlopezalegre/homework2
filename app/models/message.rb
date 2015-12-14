@@ -8,8 +8,8 @@ class Message < ActiveRecord::Base
 
 
 scope :received_messages, -> (recipient_in) do
-#	where("messages.recipient_id = ? ", recipient_in).order(created_at: :desc)	
-	joins("LEFT JOIN friends ON (messages.sender_id = friends.friend1_id or messages.sender_id=friends.friend2_id)").where("messages.recipient_id = ? AND block=FALSE", recipient_in).order(created_at: :desc)
+	where("messages.recipient_id = ? ", recipient_in).order(created_at: :desc)	
+#	joins("LEFT JOIN friends ON (messages.sender_id = friends.friend1_id and messages.sender_id=friends.friend2_id)").where("messages.recipient_id = ? AND block=FALSE", recipient_in).order(created_at: :desc)
 end
 
 

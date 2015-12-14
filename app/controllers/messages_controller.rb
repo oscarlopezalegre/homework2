@@ -6,13 +6,20 @@ class MessagesController < ApplicationController
     friends = Friend.myfriends(session[:userid])
     @friend_list = []
     friends.each do |i|
-      if i.friend1 == session[:userid]
-        @friend_list.push(i.friend2)    
+      if i.friend1_id != session[:userid]
+        @friend_list.push(i.friend1)    
       else
-        @friend_list.push(i.friend1)      
+        if i.friend2_id != session[:userid]
+          @friend_list.push(i.friend2)    
+        end
       end
     end
     @friend_list=@friend_list.uniq
+    if @friend_list.count==0
+      flash[:warning] = "You need to add friends to be able to send messages"
+      redirect_to messages_path
+    end
+
   end
 
   def create
@@ -22,9 +29,10 @@ class MessagesController < ApplicationController
     @recipient = User.find(params[:message][:recipient])
     @read = false
     @attachment = params[:message][:imagefile]    
+    @subject = params[:message][:subject]    
     # like this
 
-    message = Message.new(:content => @content, :sender => @sender, :recipient => @recipient, :read => @read)
+    message = Message.new(:content => @content, :sender => @sender, :recipient => @recipient, :read => @read, :subject => @subject)
     if @attachment
         message.attachment = @attachment
 
@@ -39,7 +47,7 @@ class MessagesController < ApplicationController
 
       redirect_to messages_path
     else
-      #error try again later (maybe a flash message)
+        flash[:warning] = "Error saving your message"
     end
   end
 
@@ -47,13 +55,13 @@ class MessagesController < ApplicationController
     require_user_logged_in
     @message = Message.find(params[:id])
     if @message.read
+        flash[:warning] = "This message was already read"
         redirect_to message_error_path
     else
       @message.read = true
       @message.read_time = Time.now
       @message.save
       MessageMailer.read_email(@message).deliver_now
-
     end
   end
 
